@@ -73,7 +73,7 @@ import Section from "./Section.astro";
             </form>
 
             <!-- Netlify build detection: static hidden form fallback -->
-            <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+            <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
               <input type="hidden" name="form-name" value="contact" />
               <input type="hidden" name="bot-field" />
               <input name="name" />
