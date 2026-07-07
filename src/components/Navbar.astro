@@ -2,17 +2,70 @@
 import Container from "./Container.astro";
 ---
 
-<header class="sticky top-0 z-50 border-b border-black/5 bg-[rgba(250,249,247,0.78)] backdrop-blur-md">
+<header class="sticky top-0 z-50 border-b border-black/5 bg-[rgba(255,255,255,0.9)] backdrop-blur-md">
   <Container>
-    <nav class="flex items-center justify-between py-4 sm:py-5">
+    <nav class="flex items-center justify-between h-[70px]">
       <a href="/#etusivu" class="font-serif text-xl text-primary md:text-2xl">Jalka-Asema KV</a>
-      <div class="flex items-center gap-4 text-sm font-medium text-muted sm:gap-5">
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-4 text-sm font-medium text-muted sm:gap-5">
         <a class="hover:text-primary hover:-translate-y-px transition-all" href="/#etusivu">Etusivu</a>
         <a class="hover:text-primary hover:-translate-y-px transition-all" href="/#tietoa">Tietoa</a>
         <a class="hover:text-primary hover:-translate-y-px transition-all" href="/#palvelut">Palvelut</a>
         <a class="hover:text-primary hover:-translate-y-px transition-all" href="/#hinnasto">Hinnasto</a>
         <a class="hover:text-primary hover:-translate-y-px transition-all" href="/#yhteys">Yhteystiedot</a>
       </div>
+
+      <!-- Mobile hamburger -->
+      <div class="md:hidden">
+        <button id="nav-toggle" aria-controls="nav-menu" aria-expanded="false" class="p-2 rounded-md bg-white/0 hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-accent/30">
+          <svg id="nav-open" class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="nav-close" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6"/></svg>
+        </button>
+      </div>
     </nav>
   </Container>
+
+  <!-- Mobile menu (animated) -->
+  <div id="nav-menu" class="fixed inset-x-4 top-[70px] z-40 origin-top-right transform rounded-lg bg-white/95 shadow-lg ring-1 ring-black/5 backdrop-blur-md opacity-0 scale-95 pointer-events-none transition-all duration-220 md:hidden">
+    <div class="px-5 py-4">
+      <nav class="flex flex-col gap-3 text-base">
+        <a href="/#etusivu" class="block py-3 px-2 rounded-md hover:bg-black/5">Etusivu</a>
+        <a href="/#tietoa" class="block py-3 px-2 rounded-md hover:bg-black/5">Tietoa</a>
+        <a href="/#palvelut" class="block py-3 px-2 rounded-md hover:bg-black/5">Palvelut</a>
+        <a href="/#hinnasto" class="block py-3 px-2 rounded-md hover:bg-black/5">Hinnasto</a>
+        <a href="/#yhteys" class="block py-3 px-2 rounded-md hover:bg-black/5">Yhteystiedot</a>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('nav-toggle');
+      const menu = document.getElementById('nav-menu');
+      const openIcon = document.getElementById('nav-open');
+      const closeIcon = document.getElementById('nav-close');
+      if(!btn || !menu) return;
+      const closeMenu = () => {
+        btn.setAttribute('aria-expanded','false');
+        menu.classList.add('opacity-0','scale-95','pointer-events-none');
+        menu.classList.remove('opacity-100','scale-100');
+        openIcon.classList.remove('hidden'); closeIcon.classList.add('hidden');
+      };
+      const openMenu = () => {
+        btn.setAttribute('aria-expanded','true');
+        menu.classList.remove('opacity-0','scale-95','pointer-events-none');
+        menu.classList.add('opacity-100','scale-100');
+        openIcon.classList.add('hidden'); closeIcon.classList.remove('hidden');
+      };
+      btn.addEventListener('click', function(){
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if(expanded) closeMenu(); else openMenu();
+      });
+      // close when clicking a link
+      menu.addEventListener('click', function(e){ if(e.target.tagName === 'A') closeMenu(); });
+      // close on escape
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeMenu(); });
+    })();
+  </script>
 </header>

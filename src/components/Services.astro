@@ -31,13 +31,13 @@ const services = [
     <div class="grid gap-5 md:grid-cols-3">
       {
         services.map((service) => (
-          <article class="card-elevated rounded-2xl bg-white p-7 md:p-8">
+            <div class="card-elevated rounded-2xl bg-white p-7 md:p-8 flex flex-col">
             <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary text-xl text-primary">
               {service.icon}
             </div>
-            <h3 class="mb-3 text-xl">{service.title}</h3>
-            <p class="leading-7 text-muted">{service.description}</p>
-          </article>
+              <h3 class="mb-3 text-lg text-center md:text-left">{service.title}</h3>
+              <p class="leading-7 text-muted flex-1">{service.description}</p>
+            </div>
         ))
       }
     </div>

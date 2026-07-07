@@ -5,25 +5,24 @@ import Section from "./Section.astro";
 
 <Section id="etusivu" class="surface-section" style="--surface: linear-gradient(180deg, #f7f4ef 0%, #faf9f7 100%);">
   <Container>
-    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-      <div class="max-w-2xl text-center lg:text-left">
-        
-        <h1 class="max-w-xl text-4xl md:text-5xl lg:text-6xl section-title mb-6 lg:mb-7">
+    <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+      <div class="max-w-2xl text-center lg:text-left px-0">
+        <h1 class="max-w-xl text-5xl md:text-6xl lg:text-6xl section-title mb-6 lg:mb-8">
           Jalkojenhoitoa kotiisi
         </h1>
-        <p class="mx-auto max-w-xl text-base leading-8 text-muted md:text-lg lg:mx-0 mb-9">
+        <p class="mx-auto max-w-xl text-base md:text-lg leading-8 text-muted lg:mx-0 mb-6 md:mb-8">
           Ammattitaitoista, kiireetöntä ja yksilöllistä jalkojenhoitoa asiakkaan omassa kodissa.
         </p>
-        <a href="/#yhteys" class="btn-primary">Ota yhteyttä</a>
-        <div class="mt-8 inline-block rounded-2xl bg-white px-5 py-4 shadow-sm">
+        <a href="/#yhteys" class="btn-primary w-full sm:w-auto text-center">Ota yhteyttä</a>
+        <div class="mt-6 md:mt-8 inline-block rounded-2xl bg-white px-5 py-4 shadow-sm mx-auto lg:mx-0">
           <h3 class="mb-2 font-semibold text-base text-text">Kotikäynnit Helsingin alueella</h3>
           <p class="text-sm text-muted leading-7">Palvelen asiakkaita kotikäynneillä Helsingissä. Hoito tapahtuu turvallisesti ja kiireettömästi asiakkaan omassa kodissa.</p>
         </div>
       </div>
 
-      <!-- decorative SVG instead of image: subtle, desktop-only -->
-      <div class="hidden lg:block relative mx-auto w-full max-w-xl lg:ml-auto" aria-hidden="true">
-        <svg viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+      <!-- decorative SVG visible on desktop only -->
+      <div class="hidden lg:flex items-center justify-center" aria-hidden="true">
+        <svg viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto max-w-md">
           <defs>
             <linearGradient id="g1" x1="0" x2="1">
               <stop offset="0%" stop-color="#A9C4B0" stop-opacity="0.18" />

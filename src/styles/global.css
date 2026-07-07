@@ -135,6 +135,39 @@ html {
 	padding-bottom: 5.5rem;
 	scroll-margin-top: 5.75rem;
 }
+
+/* Responsive typography and spacing polish */
+h1.section-title {
+	font-size: 2.25rem;
+}
+
+@media (min-width: 640px) {
+	body { font-size: 16px; }
+	h1.section-title { font-size: 2.75rem; }
+}
+
+@media (min-width: 1024px) {
+	body { font-size: 16px; }
+	h1.section-title { font-size: 3rem; }
+}
+
+/* Focus states */
+input:focus, textarea:focus, a:focus, button:focus {
+	outline: 3px solid rgba(53,82,74,0.12);
+	outline-offset: 2px;
+}
+
+/* Buttons and interactive sizing for mobile */
+.btn-primary, .btn-light { min-height: 48px; }
+
+/* Card hover on desktop */
+@media (hover: hover) and (pointer: fine) {
+	.card-elevated { transition: transform 220ms ease, box-shadow 220ms ease; }
+	.card-elevated:hover { transform: translateY(-6px); }
+}
+
+/* Prevent horizontal overflow */
+html, body { overflow-x: hidden; }
 		transform: translateY(10px);
 	}
 	to {
