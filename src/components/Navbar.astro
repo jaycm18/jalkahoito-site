@@ -45,27 +45,39 @@ import Container from "./Container.astro";
       const menu = document.getElementById('nav-menu');
       const openIcon = document.getElementById('nav-open');
       const closeIcon = document.getElementById('nav-close');
-      if(!btn || !menu) return;
+      if (!btn || !menu) return;
+
       const closeMenu = () => {
-        btn.setAttribute('aria-expanded','false');
-        menu.classList.add('opacity-0','scale-95','pointer-events-none');
-        menu.classList.remove('opacity-100','scale-100');
-        openIcon.classList.remove('hidden'); closeIcon.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.classList.add('opacity-0', 'scale-95');
+        menu.classList.remove('opacity-100', 'scale-100');
+        menu.classList.add('pointer-events-none');
+        if (openIcon) openIcon.classList.remove('hidden');
+        if (closeIcon) closeIcon.classList.add('hidden');
       };
+
       const openMenu = () => {
-        btn.setAttribute('aria-expanded','true');
-        menu.classList.remove('opacity-0','scale-95','pointer-events-none');
-        menu.classList.add('opacity-100','scale-100');
-        openIcon.classList.add('hidden'); closeIcon.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+        menu.classList.add('opacity-100', 'scale-100');
+        if (openIcon) openIcon.classList.add('hidden');
+        if (closeIcon) closeIcon.classList.remove('hidden');
       };
+
       btn.addEventListener('click', function(){
         const expanded = btn.getAttribute('aria-expanded') === 'true';
-        if(expanded) closeMenu(); else openMenu();
+        if (expanded) closeMenu(); else openMenu();
       });
-      // close when clicking a link
-      menu.addEventListener('click', function(e){ if(e.target.tagName === 'A') closeMenu(); });
+
+      // close when clicking a link inside the menu
+      menu.addEventListener('click', function(e){
+        const target = e.target;
+        if (!(target instanceof HTMLElement)) return;
+        if (target.closest && target.closest('a')) closeMenu();
+      });
+
       // close on escape
-      document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeMenu(); });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
     })();
   </script>
 </header>
