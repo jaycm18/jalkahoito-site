@@ -21,15 +21,23 @@ import Section from "./Section.astro";
         </div>
       </div>
 
-      <div class="relative mx-auto w-full max-w-xl lg:ml-auto">
-        <div class="absolute inset-0 -z-10 rounded-[2rem] bg-[radial-gradient(circle_at_top_left,rgba(169,196,176,0.34),transparent_42%),linear-gradient(135deg,rgba(255,255,255,0.7),rgba(247,244,239,0.7))] blur-2xl"></div>
-        <div class="overflow-hidden rounded-[2rem] bg-white p-3 shadow-[0_18px_50px_rgba(17,24,39,0.08)]">
-          <div class="flex min-h-[320px] items-end rounded-[1.6rem] bg-[linear-gradient(160deg,#FAF9F7_0%,#F7F4EF_58%,#E9EFE6_100%)] p-6 md:min-h-[460px] md:p-8">
-            <div class="max-w-xs rounded-[1.4rem] bg-white/82 p-5 shadow-sm backdrop-blur-sm">
-              <div class="mb-4 h-2 w-16 rounded-full bg-accent/70"></div>
-            </div>
-          </div>
-        </div>
+      <!-- decorative SVG instead of image: subtle, desktop-only -->
+      <div class="hidden lg:block relative mx-auto w-full max-w-xl lg:ml-auto" aria-hidden="true">
+        <svg viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0%" stop-color="#A9C4B0" stop-opacity="0.18" />
+              <stop offset="100%" stop-color="#35524A" stop-opacity="0.06" />
+            </linearGradient>
+          </defs>
+          <rect width="800" height="600" rx="32" fill="url(#g1)" />
+          <g transform="translate(80,60)">
+            <path d="M420 40c70 30 110 110 90 190s-90 140-160 170-150 20-200-30S70 230 140 170s190-120 280-130z"
+              fill="#F7F4EF" opacity="0.9" />
+            <path d="M420 40c70 30 110 110 90 190s-90 140-160 170" stroke="#35524A" stroke-opacity="0.06" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+          <circle cx="640" cy="120" r="6" fill="#A9C4B0" opacity="0.9" />
+        </svg>
       </div>
     </div>
   </Container>

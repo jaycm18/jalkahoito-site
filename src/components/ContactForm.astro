@@ -30,39 +30,55 @@ import Section from "./Section.astro";
         <div>
           <div class="rounded-[1.25rem] bg-white p-6 shadow-[0_16px_40px_rgba(17,24,39,0.08)]">
             <p class="mb-4 text-sm text-muted">Lähetä viesti käyttäen alla olevaa lomaketta</p>
-            <form name="contact" method="POST" data-netlify="true" class="space-y-4">
-        <input type="hidden" name="form-name" value="contact" />
+            <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/kiitos" class="space-y-4">
+              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="bot-field" />
 
-        <label class="block">
-          <span class="mb-1 block text-sm text-neutral-700">Nimi</span>
-          <input
-            type="text"
-            name="name"
-            required
-            class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
-          />
-        </label>
+              <label for="name" class="block">
+                <span class="mb-1 block text-sm text-neutral-700">Nimi</span>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                  class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
+                />
+              </label>
 
-        <label class="block">
-          <span class="mb-1 block text-sm text-neutral-700">Sähköposti</span>
-          <input
-            type="email"
-            name="email"
-            required
-            class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
-          />
-        </label>
+              <label for="email" class="block">
+                <span class="mb-1 block text-sm text-neutral-700">Sähköposti</span>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
+                />
+              </label>
 
-        <label class="block">
-          <span class="mb-1 block text-sm text-neutral-700">Viesti</span>
-          <textarea
-            name="message"
-            rows="5"
-            class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
-          ></textarea>
-        </label>
+              <label for="message" class="block">
+                <span class="mb-1 block text-sm text-neutral-700">Viesti</span>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
+                ></textarea>
+              </label>
 
               <button type="submit" class="btn-primary w-full">Lähetä viesti</button>
+            </form>
+
+            <!-- Netlify build detection: static hidden form fallback -->
+            <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="bot-field" />
+              <input name="name" />
+              <input name="email" />
+              <textarea name="message"></textarea>
             </form>
           </div>
         </div>
