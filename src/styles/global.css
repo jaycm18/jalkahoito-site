@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+:root {
+	--color-primary: #35524a;
+	--color-secondary: #f7f4ef;
+	--color-accent: #a9c4b0;
+	--color-background: #faf9f7;
+	--color-text: #2d2d2d;
+	--color-muted: #6b7280;
+}
+
+body {
+	margin: 0;
+	background: var(--color-background);
+	color: var(--color-text);
+	font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+	color: var(--color-primary);
+	font-family: "Playfair Display", ui-serif, Georgia, serif;
+	letter-spacing: -0.01em;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+a,
+button,
+input,
+textarea {
+	transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease, opacity 180ms ease;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.site-shell {
+	animation: fade-in 420ms ease both;
+}
+
+.max-w-content {
+	max-width: 1100px;
+}
+
+.py-section {
+	padding-top: 5.5rem;
+	padding-bottom: 5.5rem;
+}
+
+.btn-primary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.95rem;
+	background: var(--color-primary);
+	padding: 0.95rem 1.75rem;
+	color: #ffffff;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	text-decoration: none;
+	box-shadow: 0 10px 24px rgba(53, 82, 74, 0.12);
+}
+
+.btn-primary:hover {
+	background: #253029;
+	transform: translateY(-1px) scale(1.01);
+	box-shadow: 0 14px 30px rgba(53, 82, 74, 0.15);
+}
+
+.btn-light {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.95rem;
+	background: #ffffff;
+	padding: 0.95rem 1.75rem;
+	color: var(--color-primary);
+	font-size: 0.9375rem;
+	font-weight: 600;
+	text-decoration: none;
+	box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
+}
+
+.btn-light:hover {
+	background: #f5f5f5;
+	transform: translateY(-1px) scale(1.01);
+	box-shadow: 0 14px 30px rgba(17, 24, 39, 0.1);
+}
+
+.surface-section {
+	background: var(--surface, transparent);
+}
+
+.surface-soft {
+	background: var(--color-secondary);
+}
+
+.surface-muted {
+	background: rgba(255, 255, 255, 0.58);
+}
+
+.card-elevated {
+	border-radius: 1.25rem;
+	box-shadow: 0 12px 36px rgba(17, 24, 39, 0.06);
+}
+
+.card-elevated:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 16px 42px rgba(17, 24, 39, 0.08);
+}
+
+.section-title {
+	font-size: 2.125rem;
+	line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+	.section-title {
+		font-size: 2.5rem;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+.py-section {
+	padding-top: 5.5rem;
+	padding-bottom: 5.5rem;
+	scroll-margin-top: 5.75rem;
+}
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

@@ -1,0 +1,45 @@
+---
+import Container from "./Container.astro";
+import Section from "./Section.astro";
+
+const services = [
+  {
+    title: "Perusjalkahoito",
+    description: "Hoito henkilöille, joilla jaloissa ei ole suurempia iho- tai kynsiongelmia.",
+    icon: "◌",
+  },
+  {
+    title: "Vaativa jalkahoito",
+    description: "Hoito erilaisiin iho- tai kynsiongelmiin sekä vaativampiin jalkojenhoidon tarpeisiin.",
+    icon: "✦",
+  },
+  {
+    title: "Erityisvaativa jalkahoito",
+    description: "Suositellaan silloin, kun jaloissa on samanaikaisesti sekä iho- että kynsiongelmia parhaan hoitotuloksen saavuttamiseksi.",
+    icon: "∿",
+  },
+];
+---
+
+<Section id="palvelut" class="surface-muted">
+  <Container>
+    <div class="max-w-2xl mb-12">
+      <h2 class="section-title mb-4">Palvelut</h2>
+      <p class="text-muted leading-7">Laadukasta hoitoa jokaisen asiakkaan tarpeisiin.</p>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-3">
+      {
+        services.map((service) => (
+          <article class="card-elevated rounded-2xl bg-white p-7 md:p-8">
+            <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary text-xl text-primary">
+              {service.icon}
+            </div>
+            <h3 class="mb-3 text-xl">{service.title}</h3>
+            <p class="leading-7 text-muted">{service.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Container>
+</Section>

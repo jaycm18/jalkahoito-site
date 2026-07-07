@@ -1,0 +1,29 @@
+---
+import Container from "./Container.astro";
+import Section from "./Section.astro";
+
+const methods = [
+  { title: "Korttimaksu", desc: "Yleisimmät pankki- ja maksukortit.", icon: "💳" },
+  { title: "Käteinen", desc: "Maksu onnistuu myös käteisellä.", icon: "💶" },
+  { title: "Laskutus", desc: "Laskutus mahdollista edunvalvojan luvalla.", icon: "🧾" },
+];
+---
+
+<Section id="maksutavat" class="surface-muted">
+  <Container>
+    <div class="mx-auto max-w-3xl">
+      <h2 class="section-title mb-4 text-center">Maksutavat</h2>
+      <div class="grid gap-4 md:grid-cols-3">
+        {
+          methods.map((m) => (
+            <div class="card-elevated rounded-2xl bg-white px-6 py-6 text-center">
+              <div class="mb-3 text-2xl">{m.icon}</div>
+              <h3 class="mb-2 font-semibold">{m.title}</h3>
+              <p class="text-sm text-muted leading-6">{m.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</Section>

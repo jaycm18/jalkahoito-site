@@ -1,0 +1,72 @@
+---
+import Container from "./Container.astro";
+import Section from "./Section.astro";
+---
+
+<Section id="yhteys" class="surface-muted">
+  <Container>
+    <div class="mx-auto max-w-4xl">
+      <h2 class="section-title mb-6 text-center">Ota yhteyttä</h2>
+      <div class="grid gap-8 lg:grid-cols-2">
+        <div>
+          <h3 class="mb-3 font-semibold">Yhteystiedot</h3>
+          <p class="text-base">Puhelin</p>
+          <p class="mt-1 text-lg font-medium">040 662 5772</p>
+          <p class="mt-2 text-sm text-muted">Puhelinpalvelu: Arkisin klo 10–16</p>
+
+          <div class="mt-6">
+            <p class="text-base">Sähköposti</p>
+            <p class="mt-1 text-lg font-medium">jalkakv@gmail.com</p>
+          </div>
+
+          <div class="mt-6">
+            <p class="text-base">Palvelualue</p>
+            <p class="mt-1 text-lg font-medium">Helsinki</p>
+          </div>
+
+          <p class="mt-6 text-sm text-muted">Jos olen hoitotyössä, en välttämättä pääse vastaamaan heti. Soitan takaisin mahdollisimman pian.</p>
+        </div>
+
+        <div>
+          <div class="rounded-[1.25rem] bg-white p-6 shadow-[0_16px_40px_rgba(17,24,39,0.08)]">
+            <p class="mb-4 text-sm text-muted">Lähetä viesti käyttäen alla olevaa lomaketta</p>
+            <form name="contact" method="POST" data-netlify="true" class="space-y-4">
+        <input type="hidden" name="form-name" value="contact" />
+
+        <label class="block">
+          <span class="mb-1 block text-sm text-neutral-700">Nimi</span>
+          <input
+            type="text"
+            name="name"
+            required
+            class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
+          />
+        </label>
+
+        <label class="block">
+          <span class="mb-1 block text-sm text-neutral-700">Sähköposti</span>
+          <input
+            type="email"
+            name="email"
+            required
+            class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
+          />
+        </label>
+
+        <label class="block">
+          <span class="mb-1 block text-sm text-neutral-700">Viesti</span>
+          <textarea
+            name="message"
+            rows="5"
+            class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
+          ></textarea>
+        </label>
+
+              <button type="submit" class="btn-primary w-full">Lähetä viesti</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</Section>
