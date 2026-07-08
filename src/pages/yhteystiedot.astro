@@ -1,48 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/Navbar.astro";
+import ContactForm from "../components/ContactForm.astro";
 ---
 
 <BaseLayout title="Yhteystiedot">
   <Navbar />
-
-  <section class="max-w-xl mx-auto py-16">
-    <h1 class="text-2xl font-semibold mb-6">Ota yhteyttä</h1>
-
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      class="space-y-4"
-    >
-      <input type="hidden" name="form-name" value="contact" />
-
-      <input
-        type="text"
-        name="name"
-        placeholder="Nimi"
-        class="w-full border p-3 rounded"
-        required
-      />
-
-      <input
-        type="email"
-        name="email"
-        placeholder="Sähköposti"
-        class="w-full border p-3 rounded"
-        required
-      />
-
-      <textarea
-        name="message"
-        placeholder="Viesti"
-        class="w-full border p-3 rounded"
-        rows="5"
-      ></textarea>
-
-      <button class="bg-black text-white px-5 py-3 rounded">
-        Lähetä
-      </button>
-    </form>
-  </section>
+  <ContactForm />
 </BaseLayout>

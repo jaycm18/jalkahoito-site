@@ -30,63 +30,139 @@ import Section from "./Section.astro";
         <div>
           <div class="rounded-[1.25rem] bg-white p-6 shadow-[0_16px_40px_rgba(17,24,39,0.08)]">
             <p class="mb-4 text-sm text-muted">Lähetä viesti käyttäen alla olevaa lomaketta</p>
-            <form name="contact" method="POST" action="/kiitos/" data-netlify="true" data-netlify-honeypot="bot-field" class="space-y-4">
-              <input type="hidden" name="form-name" value="contact" />
-              <p hidden>
-                <input name="bot-field" />
-              </p>
 
-              <label for="name" class="block">
-                <span class="mb-1 block text-sm text-neutral-700">Nimi</span>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  autocomplete="name"
-                  required
-                  class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
-                />
-              </label>
+            <div data-form-shell>
+              <form
+                data-contact-form
+                action="https://formspree.io/f/mzdllbrv"
+                method="POST"
+                class="space-y-4"
+              >
+                <label for="name" class="block">
+                  <span class="mb-1 block text-sm text-neutral-700">Nimi</span>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    required
+                    class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
+                  />
+                </label>
 
-              <label for="email" class="block">
-                <span class="mb-1 block text-sm text-neutral-700">Sähköposti</span>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                  required
-                  class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
-                />
-              </label>
+                <label for="email" class="block">
+                  <span class="mb-1 block text-sm text-neutral-700">Sähköposti</span>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
+                  />
+                </label>
 
-              <label for="message" class="block">
-                <span class="mb-1 block text-sm text-neutral-700">Viesti</span>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                  class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
-                ></textarea>
-              </label>
+                <label for="message" class="block">
+                  <span class="mb-1 block text-sm text-neutral-700">Viesti</span>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    autocomplete="off"
+                    required
+                    class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"
+                  ></textarea>
+                </label>
 
-              <button type="submit" class="btn-primary w-full">Lähetä viesti</button>
-            </form>
+                <button type="submit" class="btn-primary w-full" data-submit-button>Lähetä viesti</button>
 
-            <!-- Netlify build detection: static hidden form fallback -->
-            <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
-              <input type="hidden" name="form-name" value="contact" />
-              <p>
-                <input name="bot-field" />
-              </p>
-              <input name="name" />
-              <input name="email" />
-              <textarea name="message"></textarea>
-            </form>
+                <p class="hidden text-sm text-red-700" aria-live="polite" data-form-error></p>
+              </form>
+
+              <div class="hidden opacity-0 transition-opacity duration-300" data-success-card aria-live="polite">
+                <div class="mt-6 rounded-[1.25rem] border border-secondary/40 bg-secondary/20 p-6 text-center shadow-[0_16px_40px_rgba(17,24,39,0.08)]">
+                  <div class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5">
+                      <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <h3 class="mb-2 text-lg font-semibold text-text">Kiitos!</h3>
+                  <p class="text-sm leading-7 text-muted">Viestisi on lähetetty onnistuneesti.<br />Otamme sinuun yhteyttä mahdollisimman pian.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </Container>
 </Section>
+
+<script is:inline>
+  (() => {
+    const form = document.querySelector('[data-contact-form]');
+    if (!(form instanceof HTMLFormElement)) return;
+
+    const shell = form.closest('[data-form-shell]');
+    const submitButton = form.querySelector('[data-submit-button]');
+    const errorNode = form.querySelector('[data-form-error]');
+    const successCard = shell?.querySelector('[data-success-card]');
+
+    if (!(submitButton instanceof HTMLButtonElement) || !(shell instanceof HTMLElement) || !(successCard instanceof HTMLElement)) return;
+
+    const setBusy = (busy) => {
+      submitButton.disabled = busy;
+      submitButton.textContent = busy ? 'Lähetetään...' : 'Lähetä viesti';
+    };
+
+    const showError = (message) => {
+      if (!(errorNode instanceof HTMLElement)) return;
+
+      errorNode.textContent = message;
+      errorNode.classList.remove('hidden');
+    };
+
+    const showSuccess = () => {
+      form.classList.add('hidden');
+      successCard.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        successCard.classList.remove('opacity-0');
+        successCard.classList.add('opacity-100');
+      });
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (submitButton.disabled) return;
+
+      if (errorNode instanceof HTMLElement) {
+        errorNode.textContent = '';
+        errorNode.classList.add('hidden');
+      }
+
+      setBusy(true);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Form submission failed');
+        }
+
+        form.reset();
+        showSuccess();
+      } catch {
+        showError('Viestin lähettäminen epäonnistui. Yritä myöhemmin uudelleen tai ota yhteyttä puhelimitse.');
+      } finally {
+        setBusy(false);
+      }
+    });
+  })();
+</script>
