@@ -24,22 +24,26 @@ const services = [
 <Section id="palvelut" class="surface-muted">
   <Container>
     <div class="max-w-2xl mb-12">
-      <h2 class="section-title mb-4">Palvelut</h2>
-      <p class="text-muted leading-7">Laadukasta hoitoa jokaisen asiakkaan tarpeisiin.</p>
+      <h2 class="section-title mb-4">Palvelut Helsingissä</h2>
+      <p class="text-muted leading-7">Jalkojenhoito, kotikäynnit ja hoito eri tarpeisiin Helsingin alueella.</p>
     </div>
 
     <div class="grid gap-5 md:grid-cols-3">
       {
         services.map((service) => (
-            <div class="card-elevated rounded-2xl bg-white p-7 md:p-8 flex flex-col">
+            <article class="card-elevated rounded-2xl bg-white p-7 md:p-8 flex flex-col">
             <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary text-xl text-primary">
               {service.icon}
             </div>
               <h3 class="mb-3 text-lg text-center md:text-left">{service.title}</h3>
               <p class="leading-7 text-muted flex-1">{service.description}</p>
-            </div>
+            </article>
         ))
       }
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="/palvelut/" class="btn-light">Lue lisää palveluista</a>
     </div>
   </Container>
 </Section>

@@ -6,17 +6,17 @@ import Section from "./Section.astro";
 <Section id="yhteys" class="surface-muted">
   <Container>
     <div class="mx-auto max-w-4xl">
-      <h2 class="section-title mb-6 text-center">Ota yhteyttä</h2>
+      <h2 class="section-title mb-6 text-center">Ota yhteyttä jalkahoitajaan Helsingissä</h2>
       <div class="grid gap-8 lg:grid-cols-2">
-        <div>
+        <address class="not-italic">
           <h3 class="mb-3 font-semibold">Yhteystiedot</h3>
           <p class="text-base">Puhelin</p>
-          <p class="mt-1 text-lg font-medium">040 662 5772</p>
+          <p class="mt-1 text-lg font-medium"><a href="tel:+358406625772" class="hover:text-primary">040 662 5772</a></p>
           <p class="mt-2 text-sm text-muted">Puhelinpalvelu: Arkisin klo 10–16</p>
 
           <div class="mt-6">
             <p class="text-base">Sähköposti</p>
-            <p class="mt-1 text-lg font-medium">jalkakv@gmail.com</p>
+            <p class="mt-1 text-lg font-medium"><a href="mailto:jalkakv@gmail.com" class="hover:text-primary">jalkakv@gmail.com</a></p>
           </div>
 
           <div class="mt-6">
@@ -25,11 +25,12 @@ import Section from "./Section.astro";
           </div>
 
           <p class="mt-6 text-sm text-muted">Jos olen hoitotyössä, en välttämättä pääse vastaamaan heti. Soitan takaisin mahdollisimman pian.</p>
-        </div>
+        </address>
 
-        <div>
+        <section aria-labelledby="contact-form-title">
           <div class="rounded-[1.25rem] bg-white p-6 shadow-[0_16px_40px_rgba(17,24,39,0.08)]">
-            <p class="mb-4 text-sm text-muted">Lähetä viesti käyttäen alla olevaa lomaketta</p>
+            <h3 id="contact-form-title" class="mb-4 text-lg font-semibold text-text">Lähetä viesti</h3>
+            <p class="mb-4 text-sm text-muted">Lähetä viesti käyttäen alla olevaa lomaketta, jos haluat varata kotikäynnin tai kysyä palveluista.</p>
 
             <div data-form-shell>
               <form
@@ -92,7 +93,7 @@ import Section from "./Section.astro";
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </Container>

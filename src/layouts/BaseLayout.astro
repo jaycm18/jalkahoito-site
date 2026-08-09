@@ -1,14 +1,84 @@
 ---
 import "../styles/global.css";
-const { title = "Jalkojenhoito", description = "" } = Astro.props;
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  DEFAULT_OG_IMAGE,
+  SERVICE_AREA,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "../config/site";
+
+const {
+  title = SITE_NAME,
+  description = SITE_DESCRIPTION,
+  canonical = Astro.url.pathname,
+} = Astro.props;
+
+const canonicalUrl = new URL(canonical, SITE_URL).href;
+const ogImageUrl = new URL(DEFAULT_OG_IMAGE, SITE_URL).href;
+
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
+  name: SITE_NAME,
+  url: new URL("/", SITE_URL).href,
+  description,
+  areaServed: SERVICE_AREA,
+  telephone: CONTACT_PHONE,
+  email: CONTACT_EMAIL,
+  priceRange: "€€",
+  image: ogImageUrl,
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: CONTACT_PHONE,
+      contactType: "customer service",
+      areaServed: "FI",
+      availableLanguage: ["fi"],
+    },
+  ],
+  serviceArea: {
+    "@type": "AdministrativeArea",
+    name: "Helsinki",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Jalkojenhoitopalvelut",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Jalkojenhoito",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Kotikäynnit",
+        },
+      },
+    ],
+  },
+};
 ---
 
 <!DOCTYPE html>
 <html lang="fi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="theme-color" content="#35524a" />
+    <meta name="format-detection" content="telephone=yes" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,8 +86,25 @@ const { title = "Jalkojenhoito", description = "" } = Astro.props;
       rel="stylesheet"
     />
     <title>{title}</title>
+
+    <meta property="og:locale" content="fi_FI" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={SITE_NAME} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
   </head>
-  <body>
+  <body class="site-shell">
+    <a class="skip-link" href="#main-content">Siirry sisältöön</a>
     <slot />
   </body>
 </html>

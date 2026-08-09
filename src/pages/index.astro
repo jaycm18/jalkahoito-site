@@ -9,16 +9,23 @@ import PaymentMethods from "../components/PaymentMethods.astro";
 import ContactCTA from "../components/ContactCTA.astro";
 import ContactForm from "../components/ContactForm.astro";
 import Footer from "../components/Footer.astro";
+import { SITE_DESCRIPTION } from "../config/site";
 ---
 
-<BaseLayout title="Jalkojenhoito Helsinki">
+<BaseLayout
+	title="Jalkojenhoito Helsinki ja kotikäynnit | Jalka-Asema KV"
+	description={SITE_DESCRIPTION}
+	canonical="/"
+>
   <Navbar />
-  <Hero />
-  <About />
-  <Services />
-  <Pricing />
-  <PaymentMethods />
-  <ContactCTA />
-  <ContactForm />
+  <main id="main-content">
+    <Hero />
+    <About />
+    <Services />
+    <Pricing />
+    <PaymentMethods />
+    <ContactCTA />
+    <ContactForm />
+  </main>
   <Footer />
 </BaseLayout>
