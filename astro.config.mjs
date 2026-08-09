@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-	site: process.env.SITE_URL ?? 'https://jalkaasema.fi',
+	site: 'https://jalkaasema.fi',
 	integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]
