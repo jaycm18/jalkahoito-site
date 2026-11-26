@@ -1,0 +1,154 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/Container.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout
+	title="Jalkahoidon lahjakortti 80 € | Jalka-Asema KV"
+	description="Tilaa Jalka-Asema KV:n lahjakortti jalkahoitoon. Lahjakortti sisältää perusjalkahoidon kotikäyntinä Helsingissä, kotikäyntimaksu sisältyy."
+	canonical="/lahjakortti/"
+>
+	<Navbar />
+	<main id="main-content">
+		<section class="surface-section py-section" style="--surface: linear-gradient(180deg, #f7f4ef 0%, #faf9f7 100%);">
+			<Container>
+				<div class="mx-auto max-w-5xl">
+					<header class="mx-auto mb-10 max-w-3xl text-center">
+						<h1 class="section-title mb-4">Jalkahoidon lahjakortti</h1>
+						<p class="text-muted leading-8">
+							Anna lahjaksi kiireetön jalkahoito kotikäyntinä Helsingissä. Lahjakortti sisältää perusjalkahoidon ja kotikäyntimaksun.
+						</p>
+					</header>
+
+					<div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+						<div class="space-y-6">
+							<section class="rounded-2xl bg-white p-6 shadow-[0_12px_36px_rgba(17,24,39,0.06)] sm:p-8" aria-labelledby="gift-card-details">
+								<h2 id="gift-card-details" class="mb-5 text-2xl">Lahjakortti sisältää</h2>
+								<div class="flex items-baseline justify-between gap-4 border-b border-black/10 pb-5">
+									<h3 class="text-lg font-semibold">Perusjalkahoito kotikäyntinä Helsingissä</h3>
+									<p class="shrink-0 text-2xl font-semibold text-primary">80 €</p>
+								</div>
+								<p class="mt-5 text-sm leading-7 text-muted">Kotikäyntimaksu sisältyy lahjakortin hintaan. Lahjakortti on voimassa 12 kuukautta myöntämispäivästä.</p>
+								<p class="mt-4 text-sm leading-7 text-muted">
+									Jos lahjakortin saajan jalkojen tilanne edellyttää vaativampaa tai erityisvaativaa jalkahoitoa, hoito voidaan toteuttaa myös lahjakorttia vastaan. Tällöin asiakas maksaa ainoastaan valitun hoidon ja lahjakortin arvon välisen erotuksen.
+								</p>
+							</section>
+
+							<section class="rounded-2xl bg-white/70 p-6 sm:p-8" aria-labelledby="payment-process">
+								<h2 id="payment-process" class="mb-4 text-xl">Tilaus ja maksu</h2>
+								<ol class="list-inside list-decimal space-y-2 text-sm leading-7 text-muted">
+									<li>Lähetä tilaus lomakkeella.</li>
+									<li>Noora lähettää sinulle sähköpostitse tilisiirron maksuohjeet.</li>
+									<li>Kun maksu on vahvistettu, lahjakortti toimitetaan sähköpostitse.</li>
+								</ol>
+								<p class="mt-4 text-sm leading-7 text-muted">Lahjakortti on voimassa vasta maksun vahvistamisen ja lahjakortin myöntämisen jälkeen.</p>
+							</section>
+						</div>
+
+						<section class="rounded-2xl bg-white p-6 shadow-[0_12px_36px_rgba(17,24,39,0.06)] sm:p-8" aria-labelledby="order-form-title">
+							<h2 id="order-form-title" class="mb-2 text-2xl">Tilaa lahjakortti</h2>
+							<p class="mb-6 text-sm leading-7 text-muted">Lahjakortin hinta on 80 €. Maksu tapahtuu tilisiirrolla erikseen lähetettävien ohjeiden mukaan.</p>
+
+							<div data-gift-order-shell>
+								<form
+									data-gift-order-form
+									action="https://formspree.io/f/mzdllbrv"
+									method="POST"
+									class="space-y-4"
+								>
+									<input type="hidden" name="_subject" value="Jalkahoidon lahjakorttitilaus – 80 €" />
+									<input type="hidden" name="tilaus" value="Jalkahoidon lahjakortti, 80 €" />
+
+									<label for="gift-customer-name" class="block">
+										<span class="mb-1 block text-sm text-neutral-700">Tilaajan nimi <span aria-hidden="true">*</span></span>
+										<input id="gift-customer-name" name="customer_name" type="text" autocomplete="name" required class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25" />
+									</label>
+
+									<label for="gift-customer-email" class="block">
+										<span class="mb-1 block text-sm text-neutral-700">Tilaajan sähköposti <span aria-hidden="true">*</span></span>
+										<input id="gift-customer-email" name="email" type="email" autocomplete="email" required class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25" />
+									</label>
+
+									<label for="gift-recipient-name" class="block">
+										<span class="mb-1 block text-sm text-neutral-700">Lahjakortin saajan nimi <span class="text-muted">(valinnainen)</span></span>
+										<input id="gift-recipient-name" name="recipient_name" type="text" autocomplete="off" class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25" />
+									</label>
+
+									<label for="gift-message" class="block">
+										<span class="mb-1 block text-sm text-neutral-700">Henkilökohtainen tervehdys <span class="text-muted">(valinnainen)</span></span>
+										<textarea id="gift-message" name="personal_message" rows="3" class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"></textarea>
+									</label>
+
+									<label for="gift-additional-info" class="block">
+										<span class="mb-1 block text-sm text-neutral-700">Lisätiedot <span class="text-muted">(valinnainen)</span></span>
+										<textarea id="gift-additional-info" name="additional_information" rows="3" class="w-full rounded-xl border border-black/10 bg-background px-4 py-3 text-text focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent/25"></textarea>
+									</label>
+
+									<button type="submit" class="btn-primary w-full" data-gift-submit-button>Tilaa lahjakortti – 80 €</button>
+									<p class="hidden text-sm text-red-700" aria-live="polite" data-gift-form-error></p>
+								</form>
+
+								<div class="hidden rounded-xl border border-secondary/40 bg-secondary/40 p-5 text-sm leading-7 text-text" data-gift-success role="status" aria-live="polite">
+									Kiitos lahjakorttitilauksestasi! Tilauksesi on vastaanotettu. Noora lähettää sinulle sähköpostitse maksuohjeet. Lahjakortti toimitetaan sähköpostitse maksun vahvistamisen jälkeen.
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</Container>
+		</section>
+	</main>
+	<Footer />
+</BaseLayout>
+
+<script is:inline>
+	(() => {
+		const form = document.querySelector('[data-gift-order-form]');
+		if (!(form instanceof HTMLFormElement)) return;
+
+		const shell = form.closest('[data-gift-order-shell]');
+		const submitButton = form.querySelector('[data-gift-submit-button]');
+		const errorNode = form.querySelector('[data-gift-form-error]');
+		const successNode = shell?.querySelector('[data-gift-success]');
+
+		if (!(submitButton instanceof HTMLButtonElement) || !(shell instanceof HTMLElement) || !(successNode instanceof HTMLElement)) return;
+
+		form.addEventListener('submit', async (event) => {
+			event.preventDefault();
+			if (submitButton.disabled) return;
+
+			if (errorNode instanceof HTMLElement) {
+				errorNode.textContent = '';
+				errorNode.classList.add('hidden');
+			}
+
+			submitButton.disabled = true;
+			submitButton.textContent = 'Lähetetään...';
+
+			try {
+				const response = await fetch(form.action, {
+					method: 'POST',
+					body: new FormData(form),
+					headers: { Accept: 'application/json' },
+				});
+
+				if (!response.ok) throw new Error('Gift card order submission failed');
+
+				form.classList.add('hidden');
+				successNode.classList.remove('hidden');
+			} catch {
+				if (errorNode instanceof HTMLElement) {
+					errorNode.textContent = 'Tilauksen lähettäminen epäonnistui. Yritä myöhemmin uudelleen.';
+					errorNode.classList.remove('hidden');
+				}
+			} finally {
+				if (!form.classList.contains('hidden')) {
+					submitButton.disabled = false;
+					submitButton.textContent = 'Tilaa lahjakortti – 80 €';
+				}
+			}
+		});
+	})();
+</script>

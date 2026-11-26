@@ -1,6 +1,6 @@
 import { SITE_URL } from "../config/site";
 
-const routes = ["/", "/palvelut/", "/hinnasto/", "/yhteystiedot/"];
+const routes = ["/", "/palvelut/", "/hinnasto/", "/yhteystiedot/", "/lahjakortti/"];
 
 export function GET() {
 	const lastMod = new Date().toISOString();
